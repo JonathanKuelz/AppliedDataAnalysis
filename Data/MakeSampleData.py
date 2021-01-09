@@ -6,10 +6,11 @@ import random
 
 
 def main():
-    columns = ['FloatNumbers', 'SomeStrings', 'Time']
+    columns = ['FloatNumbers', 'Integers', 'SomeStrings', 'Time']
     nr_rows = 10000
     df = pd.DataFrame(columns=columns)
-    df.FloatNumbers = np.random.rand(nr_rows)
+    df.FloatNumbers = np.random.rand(nr_rows) * np.random.randint(0, 1e6, nr_rows)
+    df.Integers = np.random.randint(0, 1e6, nr_rows)
     strings = [''.join([random.choice(string.ascii_letters) for _ in range(10)]) for row in range(nr_rows)]
     df.SomeStrings = strings
     start_date = datetime.datetime(1994, 10, 25)
